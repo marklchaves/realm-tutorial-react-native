@@ -5,7 +5,7 @@ let app;
 // Returns the shared instance of the Realm app.
 export function getRealmApp() {
   if (app === undefined) {
-    const appId = "application-0-wvszv"; // Set Realm app ID here.
+    const appId = "tasktracker-nkbvo"; // Set Realm app ID here.
     const appConfig = {
       id: appId,
       timeout: 10000,

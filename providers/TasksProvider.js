@@ -23,6 +23,8 @@ const TasksProvider = ({ children, projectPartition }) => {
     };
     // open a realm for this particular project
     Realm.open(config).then((projectRealm) => {
+      // Need to fix memory leak. 
+      // Maybe add `if (!realmRef.current) return null;` here? ~mlc
       realmRef.current = projectRealm;
 
       const syncTasks = projectRealm.objects("Task");

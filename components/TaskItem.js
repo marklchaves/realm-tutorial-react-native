@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { View } from "react-native";
 import { ListItem, Text } from "react-native-elements";
 import { useTasks } from "../providers/TasksProvider";
 import { ActionSheet } from "./ActionSheet";
@@ -48,8 +47,6 @@ export function TaskItem({ task }) {
       },
     });
   }
-
-  console.log(`[DEBUG] task.status is ${task.status}`);
 
   return (
     <>

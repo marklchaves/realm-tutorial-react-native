@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Text, ListItem } from "react-native-elements";
+import { View } from "react-native";
+import { ListItem, Text } from "react-native-elements";
 import { useTasks } from "../providers/TasksProvider";
 import { ActionSheet } from "./ActionSheet";
 import { Task } from "../schemas";
+
+import styles from "../stylesheet";
 
 export function TaskItem({ task }) {
   const [actionSheetVisible, setActionSheetVisible] = useState(false);
@@ -46,6 +49,8 @@ export function TaskItem({ task }) {
     });
   }
 
+  console.log(`[DEBUG] task.status is ${task.status}`);
+
   return (
     <>
       <ActionSheet
@@ -57,25 +62,24 @@ export function TaskItem({ task }) {
         }}
         actions={actions}
       />
-      <ListItem>
+      <ListItem 
+        key={task.id} 
+        onPress={() => {
+          setActionSheetVisible(true);
+        }}
+        bottomDivider>
         <ListItem.Content>
-          <ListItem.Title
-            key={task.id}
-            onPress={() => {
-              setActionSheetVisible(true);
-            }}
-            bottomDivider
-            checkmark={
-              task.status === Task.STATUS_COMPLETE ? (
-                <Text>&#10004; {/* checkmark */}</Text>
-              ) : task.status === Task.STATUS_IN_PROGRESS ? (
-                <Text>In Progress</Text>
-              ) : null
-            }
-          >        
+          <ListItem.Title>
             {task.name}
-          </ListItem.Title>
+            </ListItem.Title>
         </ListItem.Content>
+        {
+          task.status === Task.STATUS_COMPLETE ? (
+            <Text>&#10004; {/* checkmark */}</Text>
+          ) : task.status === Task.STATUS_IN_PROGRESS ? (
+            <Text>In Progress</Text>
+          ) : null
+        }
       </ListItem>
     </>
   );

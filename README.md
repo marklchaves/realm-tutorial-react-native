@@ -2,6 +2,16 @@
 
 Follow along at https://docs.mongodb.com/realm/tutorial/react-native/
 
+## Run
+
+At the root directory.
+
+`npx react-native start`
+
+Separate window.
+
+`npx react-native run-ios`
+
 ## Troubleshooting
 
 The most common issue is schema mismatch due to frequent little tweaks to the
